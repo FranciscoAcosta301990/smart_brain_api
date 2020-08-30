@@ -8,8 +8,6 @@ const register = require("./controllers/register");
 const profile = require("./controllers/profile");
 const img = require("./controllers/img");
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
 const pgdatabase = knex({
   client: "pg",
   connection: {
@@ -20,8 +18,8 @@ const pgdatabase = knex({
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req,res) => {res.send("it is working!")});
 
