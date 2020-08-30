@@ -1,4 +1,4 @@
-const handleSignin = (pgdatabase, bcrypt) => (req, res) => {
+const handleSignin = (req, res, pgdatabase, bcrypt) => {
   const {email, password} = req.body;
   if (!email || !password) {
     return res.status(400).json("Incorrect form submission.");

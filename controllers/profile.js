@@ -1,4 +1,4 @@
-const handleProfile = (pgdatabase) => (req, res) => {
+const handleProfile = (req, res, pgdatabase => {
   const {id} = req.params;
   let found = false;
   pgdatabase.select("*").from("users").where({id})
