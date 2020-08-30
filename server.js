@@ -1,7 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const bcrypt = require("bcrypt-nodejs");
-const knex = require("knex");
+const express = require('express');
+const bcrypt = require('bcrypt-nodejs');
+const cors = require('cors');
+const knex = require('knex');
 
 const signin = require("./controllers/signin");
 const register = require("./controllers/register");
@@ -18,8 +18,8 @@ const pgdatabase = knex({
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req,res) => {res.send("it is working!")});
 

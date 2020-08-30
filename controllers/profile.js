@@ -1,17 +1,16 @@
-const handleProfile = (req, res, pgdatabase) => {
-  const {id} = req.params;
-  let found = false;
-  pgdatabase.select("*").from("users").where({id})
+const handleProfileGet = (req, res, pgdatabase) => {
+  const { id } = req.params;
+  pgdatabase.select('*').from('users').where({id})
     .then(user => {
       if (user.length) {
-        res.json(user[0]);
+        res.json(user[0])
       } else {
-        res.status(400).json("Not found");
+        res.status(400).json('Not found')
       }
     })
-      .catch(err => res.status(400).json("error getting the user"))
+    .catch(err => res.status(400).json('error getting user'))
 }
 
 module.exports = {
-  handleProfile: handleProfile
+  handleProfileGet
 }
