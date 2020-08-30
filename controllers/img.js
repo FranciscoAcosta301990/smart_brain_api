@@ -12,7 +12,7 @@ const handleApiCall = (req, res) => {
   .catch(err => res.status(400).json("Unable to work with api."))
 }
 
-const handleImage = (pgdatabase) => (req, res) => {
+const handleImage = (req, res, pgdatabase) => {
   const {id} = req.body;
   pgdatabase("users").where({id})
   .increment("entries", 1)
