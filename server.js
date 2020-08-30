@@ -37,8 +37,10 @@ app.put("/image", img.handleImage(pgdatabase));
 // POST to recive the imageurl from the frontend.
 app.post("/imageurl", (req, res) => {img.handleApiCall(req,res)});
 
-app.listen(3000, () => {
-  console.log("app is running in port 3000");
+const PORT = process.env.PORT;
+
+app.listen(PORT || 3000, () => {
+  console.log("app is running in port " + PORT);
 });
 
 /*
