@@ -1,9 +1,8 @@
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' data: blob:; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; object-src 'none'; form-action 'none'; manifest-src 'self'; base-uri 'none'; block-all-mixed-content;" />
-
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt-nodejs");
 const knex = require("knex");
+
 const signin = require("./controllers/signin");
 const register = require("./controllers/register");
 const profile = require("./controllers/profile");
@@ -21,8 +20,10 @@ const pgdatabase = knex({
 
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
+app.get("/", (req,res) => {res.send(pgdatabase.users)});
 
 // input data for login, and authentication of that data.
 app.post("/signin", signin.handleSignin(pgdatabase, bcrypt));
