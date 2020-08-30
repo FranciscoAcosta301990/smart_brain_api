@@ -9,7 +9,7 @@ const handleRegister = (pgdatabase, bcrypt) => (req, res) => {
       hash: hash,
       email: email
     })
-    .into("logion")
+    .into("login")
     .returning("email")
     .then(loginEmail => {
       return trx("users")
