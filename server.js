@@ -1,3 +1,5 @@
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' data: blob:; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; object-src 'none'; form-action 'none'; manifest-src 'self'; base-uri 'none'; block-all-mixed-content;" />
+
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt-nodejs");
