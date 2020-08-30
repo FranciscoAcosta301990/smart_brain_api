@@ -23,7 +23,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req,res) => {res.send(pgdatabase.users)});
+app.get("/", (req,res) => {res.send("it is working!")});
 
 // input data for login, and authentication of that data.
 app.post("/signin", signin.handleSignin(pgdatabase, bcrypt));
