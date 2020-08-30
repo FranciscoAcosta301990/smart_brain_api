@@ -1,17 +1,9 @@
-const showData = (name, email, password, hash) => {
-  console.log("hanleRegistrationName" + name)
-  console.log("hanleRegistrationEmail" + email)
-  console.log("hanleRegistrationPassword" + password)
-  console.log("hanleRegistrationHash" + hash)
-}
-
 const handleRegister = (req, res, pgdatabase, bcrypt) => {
   const {name, email, password} = req.body;
   if (!name || !email || !password) {
     return res.status(400).json("Incorrect form submission.");
   }
   const hash = bcrypt.hashSync(password);
-  
   pgdatabase.transaction(trx => {
     trx.insert({
       hash: hash,
@@ -34,10 +26,7 @@ const handleRegister = (req, res, pgdatabase, bcrypt) => {
     .then(trx.commit)
     .catch(trx.rollback)
   })
-    .catch(err => res.console.log(
-      "hanleRegistrationName " + name +
-      " hanleRegistrationEmail " + email +
-      " hanleRegistrationPassword " + password))
+    .catch(err => res.status(400).json("unable to register"))
 };
 
 module.exports = {
